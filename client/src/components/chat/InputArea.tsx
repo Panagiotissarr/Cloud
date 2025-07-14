@@ -91,22 +91,21 @@ export function InputArea({ onSendMessage, disabled }: InputAreaProps) {
             </div>
           </div>
           
-          <div className="flex items-center justify-center mt-3">
+          <div className="flex items-center justify-between mt-3">
+            <div className="flex items-center gap-2">
+              <a 
+                href="https://panagiotissarr.github.io" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-xs text-[var(--chat-subtext)] hover:text-[var(--chat-accent)] transition-colors"
+              >
+                Made by Panagiotis
+              </a>
+            </div>
             <div className="flex items-center gap-2 text-xs text-[var(--chat-subtext)]">
               <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
               <span>Cloud can make mistakes</span>
             </div>
-          </div>
-          
-          <div className="flex justify-center mt-3">
-            <a 
-              href="https://panagiotissarr.github.io" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-xs text-[var(--chat-subtext)] hover:text-[var(--chat-accent)] transition-colors"
-            >
-              Made by Panagiotis
-            </a>
           </div>
         </div>
       </div>
