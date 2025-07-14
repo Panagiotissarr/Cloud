@@ -62,17 +62,19 @@ export default function Chat() {
         onWebSearchToggle={handleWebSearchToggle}
       />
       
-      <div className="flex-1 flex flex-col justify-end">
+      <div className="flex-1 overflow-hidden pb-32">
         <MessageArea
           messages={messages}
           isLoading={sendMessageMutation.isPending}
         />
       </div>
       
-      <InputArea
-        onSendMessage={handleSendMessage}
-        disabled={sendMessageMutation.isPending}
-      />
+      <div className="fixed bottom-0 left-0 right-0 z-10">
+        <InputArea
+          onSendMessage={handleSendMessage}
+          disabled={sendMessageMutation.isPending}
+        />
+      </div>
     </div>
   );
 }

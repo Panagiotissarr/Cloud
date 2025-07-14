@@ -18,7 +18,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
       )}
     >
       {isAssistant && (
-        <div className="w-8 h-8 bg-gradient-to-br from-[var(--chat-accent)] to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+        <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
           <Bot className="text-white text-sm" size={16} />
         </div>
       )}
@@ -44,8 +44,8 @@ export function MessageBubble({ message }: MessageBubbleProps) {
       </div>
       
       {isUser && (
-        <div className="w-8 h-8 bg-[var(--chat-accent)] bg-opacity-20 rounded-full flex items-center justify-center flex-shrink-0">
-          <User className="text-[var(--chat-accent)] text-sm" size={16} />
+        <div className="w-8 h-8 bg-pink-500 bg-opacity-20 rounded-full flex items-center justify-center flex-shrink-0">
+          <User className="text-pink-500 text-sm" size={16} />
         </div>
       )}
     </div>

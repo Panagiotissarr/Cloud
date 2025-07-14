@@ -14,7 +14,7 @@ export function ChatHeader({ webSearchEnabled, onWebSearchToggle }: ChatHeaderPr
   return (
     <header className="chat-card border-b-0 rounded-b-none px-6 py-4 flex items-center justify-between">
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 bg-gradient-to-br from-[var(--chat-accent)] to-purple-500 rounded-xl flex items-center justify-center">
+        <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
           <Cloud className="text-white text-lg" size={20} />
         </div>
         <div>
