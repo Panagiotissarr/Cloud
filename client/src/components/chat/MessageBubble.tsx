@@ -25,7 +25,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
       
       <div
         className={cn(
-          "rounded-2xl p-4 max-w-2xl shadow-sm",
+          "rounded-2xl p-4 max-w-xs sm:max-w-sm md:max-w-md shadow-sm",
           isUser
             ? "bg-[var(--chat-user-bg)] text-white rounded-tr-md"
             : "chat-card rounded-tl-md"

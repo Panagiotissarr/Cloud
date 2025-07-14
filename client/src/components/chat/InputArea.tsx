@@ -38,8 +38,8 @@ export function InputArea({ onSendMessage, disabled }: InputAreaProps) {
   }, [message]);
 
   return (
-    <div className="chat-card border-t-0 rounded-t-none p-6">
-      <div className="max-w-4xl mx-auto">
+    <div className="chat-card border-t-0 rounded-t-none p-6 mt-4">
+      <div className="max-w-3xl mx-auto">
         <div className="flex items-end gap-3">
           <div className="flex-1 bg-[var(--input)] rounded-2xl border border-[var(--chat-border)] focus-within:border-[var(--chat-accent)] focus-within:ring-2 focus-within:ring-[var(--chat-accent)]/20">
             <Textarea

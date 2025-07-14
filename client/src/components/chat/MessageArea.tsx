@@ -21,10 +21,10 @@ export function MessageArea({ messages, isLoading }: MessageAreaProps) {
   }, [messages, isLoading]);
 
   return (
-    <div className="flex-1 overflow-y-auto p-6 space-y-6">
+    <div className="overflow-y-auto p-6 max-h-[60vh]">
       {/* Welcome Message */}
       {messages.length === 0 && (
-        <div className="chat-welcome">
+        <div className="chat-welcome mb-6">
           <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4 mx-auto">
             <Bot className="text-white text-2xl" size={24} />
           </div>
@@ -39,7 +39,7 @@ export function MessageArea({ messages, isLoading }: MessageAreaProps) {
       )}
 
       {/* Messages */}
-      <div className="space-y-4 max-w-4xl mx-auto">
+      <div className="space-y-4 max-w-3xl mx-auto">
         {messages.map((message) => (
           <MessageBubble key={message.id} message={message} />
         ))}

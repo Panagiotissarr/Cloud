@@ -56,16 +56,18 @@ export default function Chat() {
   };
 
   return (
-    <div className="min-h-screen chat-container">
+    <div className="min-h-screen chat-container flex flex-col">
       <ChatHeader
         webSearchEnabled={webSearchEnabled}
         onWebSearchToggle={handleWebSearchToggle}
       />
       
-      <MessageArea
-        messages={messages}
-        isLoading={sendMessageMutation.isPending}
-      />
+      <div className="flex-1 flex flex-col justify-end">
+        <MessageArea
+          messages={messages}
+          isLoading={sendMessageMutation.isPending}
+        />
+      </div>
       
       <InputArea
         onSendMessage={handleSendMessage}
