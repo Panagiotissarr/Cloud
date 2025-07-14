@@ -52,7 +52,7 @@ Preferred communication style: Simple, everyday language.
 - **Form Components**: shadcn/ui components for consistent styling
 
 ### External Services
-- **OpenAI Integration**: GPT-4 model for chat responses
+- **Google Gemini Integration**: Gemini 2.5 Flash model for chat responses
 - **Web Search**: DuckDuckGo API integration for real-time information
 - **Neon Database**: PostgreSQL hosting service integration
 
@@ -62,7 +62,7 @@ Preferred communication style: Simple, everyday language.
 2. **API Request**: Frontend sends POST request to `/api/chat` endpoint
 3. **Conversation Management**: Backend creates/retrieves conversation
 4. **Web Search** (optional): Performs web search using DuckDuckGo API
-5. **AI Processing**: OpenAI GPT-4 generates response with context
+5. **AI Processing**: Google Gemini 2.5 Flash generates response with context
 6. **Database Storage**: Messages stored in PostgreSQL via Drizzle ORM
 7. **Response**: AI response sent back to frontend
 8. **UI Update**: React Query updates UI with new messages
@@ -72,7 +72,7 @@ Preferred communication style: Simple, everyday language.
 ### Core Dependencies
 - **@neondatabase/serverless**: PostgreSQL connection for Neon
 - **drizzle-orm**: Type-safe database ORM
-- **openai**: Official OpenAI API client
+- **@google/genai**: Google Gemini AI client
 - **@tanstack/react-query**: Server state management
 - **@radix-ui/***: Headless UI components
 - **wouter**: Lightweight routing library
@@ -92,7 +92,7 @@ Preferred communication style: Simple, everyday language.
 
 ### Environment Variables
 - `DATABASE_URL`: PostgreSQL connection string (required)
-- `OPENAI_API_KEY`: OpenAI API key for chat functionality
+- `GEMINI_API_KEY`: Google Gemini API key for chat functionality
 - `NODE_ENV`: Environment mode (development/production)
 
 ### Scripts

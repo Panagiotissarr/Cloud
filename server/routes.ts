@@ -1,14 +1,14 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { generateChatResponse } from "./services/openai";
+import { generateChatResponse } from "./services/gemini";
 import { performWebSearch, formatSearchResultsForAI } from "./services/websearch";
 import { insertMessageSchema, insertConversationSchema } from "@shared/schema";
 import { z } from "zod";
 
 const chatRequestSchema = z.object({
   message: z.string().min(1),
-  conversationId: z.number().optional(),
+  conversationId: z.number().nullable().optional(),
   webSearchEnabled: z.boolean().default(true),
 });
 

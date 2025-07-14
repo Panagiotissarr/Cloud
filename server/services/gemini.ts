@@ -1,9 +1,7 @@
-import OpenAI from "openai";
+import { GoogleGenAI } from "@google/genai";
 
-// the newest OpenAI model is "gpt-4o" which was released May 13, 2024. do not change this unless explicitly requested by the user
-const openai = new OpenAI({ 
-  apiKey: process.env.OPENAI_API_KEY || process.env.OPENAI_API_KEY_ENV_VAR || ""
-});
+// Note that the newest Gemini model series is "gemini-2.5-flash" or "gemini-2.5-pro"
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
 
 export interface ChatResponse {
   content: string;
@@ -23,25 +21,39 @@ export async function generateChatResponse(
       systemPrompt += `\n\nYou have access to current web search results. Use this information to provide up-to-date and accurate responses. Here are the search results:\n\n${webSearchResults}`;
     }
 
-    const messages = [
-      { role: "system", content: systemPrompt },
-      ...conversationHistory,
-      { role: "user", content: message }
-    ];
+    // Convert conversation history to Gemini format
+    const contents = [];
+    
+    // Add conversation history
+    for (const msg of conversationHistory) {
+      contents.push({
+        role: msg.role === "assistant" ? "model" : "user",
+        parts: [{ text: msg.content }]
+      });
+    }
+    
+    // Add current message
+    contents.push({
+      role: "user",
+      parts: [{ text: message }]
+    });
 
-    const response = await openai.chat.completions.create({
-      model: "gpt-4o",
-      messages: messages as any,
-      temperature: 0.7,
-      max_tokens: 1000,
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      config: {
+        systemInstruction: systemPrompt,
+        temperature: 0.7,
+        maxOutputTokens: 1000,
+      },
+      contents: contents
     });
 
     return {
-      content: response.choices[0].message.content || "I'm sorry, I couldn't generate a response.",
+      content: response.text || "I'm sorry, I couldn't generate a response.",
       webSearchUsed: webSearchEnabled && !!webSearchResults
     };
   } catch (error) {
-    console.error("OpenAI API error:", error);
+    console.error("Gemini API error:", error);
     throw new Error("Failed to generate chat response");
   }
 }
