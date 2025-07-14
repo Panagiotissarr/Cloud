@@ -7,6 +7,7 @@ This is a modern full-stack chat application built with React, Express.js, and T
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+Project Status: Complete - ready for download instead of deployment.
 
 ## System Architecture
 
