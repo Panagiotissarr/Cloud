@@ -81,6 +81,17 @@ export function InputArea({ onSendMessage, disabled }: InputAreaProps) {
               <span>Cloud can make mistakes</span>
             </div>
           </div>
+          
+          <div className="flex justify-center mt-3">
+            <a 
+              href="https://panagiotissarr.github.io" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-xs text-[var(--chat-subtext)] hover:text-[var(--chat-accent)] transition-colors"
+            >
+              Made by Panagiotis
+            </a>
+          </div>
         </div>
       </div>
     </div>
