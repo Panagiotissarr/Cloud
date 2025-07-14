@@ -66,7 +66,7 @@ export function ChatHeader({ webSearchEnabled, onWebSearchToggle }: ChatHeaderPr
                       onCheckedChange={onWebSearchToggle}
                       className="data-[state=checked]:bg-[var(--chat-accent)]"
                     />
-                    <Search className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 text-white pointer-events-none" />
+                    <Search className={`absolute top-1/2 transform -translate-y-1/2 w-3 h-3 text-white pointer-events-none transition-all duration-200 ${webSearchEnabled ? 'right-1' : 'left-1'}`} />
                   </div>
                 </div>
                 
