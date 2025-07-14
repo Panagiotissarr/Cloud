@@ -25,10 +25,17 @@ export default function Chat() {
 
   const sendMessageMutation = useMutation({
     mutationFn: async (message: string) => {
+      const userName = localStorage.getItem('userName') || '';
+      const userPronouns = localStorage.getItem('userPronouns') || '';
+      
       const response = await apiRequest("POST", "/api/chat", {
         message,
         conversationId,
         webSearchEnabled,
+        userProfile: {
+          name: userName,
+          pronouns: userPronouns
+        }
       });
       return response.json() as Promise<ChatResponse>;
     },

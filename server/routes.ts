@@ -10,6 +10,10 @@ const chatRequestSchema = z.object({
   message: z.string().min(1),
   conversationId: z.number().nullable().optional(),
   webSearchEnabled: z.boolean().default(true),
+  userProfile: z.object({
+    name: z.string().optional(),
+    pronouns: z.string().optional()
+  }).optional()
 });
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -39,7 +43,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Send a chat message
   app.post("/api/chat", async (req, res) => {
     try {
-      const { message, conversationId, webSearchEnabled } = chatRequestSchema.parse(req.body);
+      const { message, conversationId, webSearchEnabled, userProfile } = chatRequestSchema.parse(req.body);
       
       let actualConversationId = conversationId;
       
@@ -83,7 +87,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
         message,
         conversationHistory.slice(-10), // Keep last 10 messages for context
         webSearchEnabled,
-        webSearchResults
+        webSearchResults,
+        userProfile
       );
 
       // Save AI response

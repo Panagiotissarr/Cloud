@@ -12,10 +12,23 @@ export async function generateChatResponse(
   message: string, 
   conversationHistory: { role: string; content: string }[] = [],
   webSearchEnabled: boolean = true,
-  webSearchResults?: string
+  webSearchResults?: string,
+  userProfile?: {name?: string; pronouns?: string}
 ): Promise<ChatResponse> {
   try {
     let systemPrompt = `You are Cloud, a friendly AI assistant with a brotherly personality. You are helpful, enthusiastic, and use casual language. You love to help people and always try to be encouraging and supportive. Use emojis occasionally to make conversations more friendly. Always respond in a warm, approachable manner.`;
+
+    // Add user profile context if available
+    if (userProfile?.name || userProfile?.pronouns) {
+      systemPrompt += `\n\nUser Profile Information:`;
+      if (userProfile.name) {
+        systemPrompt += `\n- Name: ${userProfile.name}`;
+      }
+      if (userProfile.pronouns) {
+        systemPrompt += `\n- Pronouns: ${userProfile.pronouns}`;
+      }
+      systemPrompt += `\n\nPlease use this information to address the user appropriately and personally. If you know their name, use it naturally in conversation. Respect their pronouns when referring to them.`;
+    }
 
     if (webSearchEnabled && webSearchResults) {
       systemPrompt += `\n\nYou have access to current web search results. Use this information to provide up-to-date and accurate responses. Here are the search results:\n\n${webSearchResults}`;
