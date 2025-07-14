@@ -56,7 +56,7 @@ export default function Chat() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen chat-container">
       <ChatHeader
         webSearchEnabled={webSearchEnabled}
         onWebSearchToggle={handleWebSearchToggle}

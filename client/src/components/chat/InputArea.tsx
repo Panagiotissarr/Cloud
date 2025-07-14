@@ -38,17 +38,17 @@ export function InputArea({ onSendMessage, disabled }: InputAreaProps) {
   }, [message]);
 
   return (
-    <div className="frappe-colors border-t border-[var(--bg-surface0)] p-4">
+    <div className="chat-card border-t-0 rounded-t-none p-6">
       <div className="max-w-4xl mx-auto">
         <div className="flex items-end gap-3">
-          <div className="flex-1 bg-[var(--bg-mantle)] rounded-2xl border border-[var(--bg-surface0)] focus-within:border-[var(--color-blue)] focus-within:ring-2 focus-within:ring-[var(--color-blue)]/20">
+          <div className="flex-1 bg-[var(--input)] rounded-2xl border border-[var(--chat-border)] focus-within:border-[var(--chat-accent)] focus-within:ring-2 focus-within:ring-[var(--chat-accent)]/20">
             <Textarea
               ref={textareaRef}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Type your message... (Press Enter to send, Shift+Enter for new line)"
-              className="w-full p-4 bg-transparent resize-none border-0 focus:ring-0 focus:outline-none placeholder:text-[var(--text-sub0)] text-[var(--text-main)] min-h-[60px] max-h-32"
+              className="w-full p-4 bg-transparent resize-none border-0 focus:ring-0 focus:outline-none placeholder:text-[var(--chat-subtext)] text-[var(--chat-text)] min-h-[60px] max-h-32"
               disabled={disabled}
             />
           </div>
@@ -56,7 +56,7 @@ export function InputArea({ onSendMessage, disabled }: InputAreaProps) {
             onClick={handleSend}
             disabled={!message.trim() || disabled}
             className={cn(
-              "bg-[var(--color-blue)] hover:bg-[var(--color-blue)]/90 text-white rounded-2xl p-4 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-blue)]/50",
+              "bg-[var(--chat-accent)] hover:bg-[var(--chat-accent)]/90 text-white rounded-2xl p-4 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--chat-accent)]/50",
               disabled && "opacity-50 cursor-not-allowed"
             )}
           >
@@ -65,7 +65,7 @@ export function InputArea({ onSendMessage, disabled }: InputAreaProps) {
         </div>
         
         <div className="flex items-center justify-between mt-3">
-          <div className="flex items-center gap-4 text-xs text-[var(--text-sub1)]">
+          <div className="flex items-center gap-4 text-xs text-[var(--chat-subtext)]">
             <span className="flex items-center gap-1">
               <Keyboard size={12} />
               Enter to send
@@ -75,8 +75,8 @@ export function InputArea({ onSendMessage, disabled }: InputAreaProps) {
               Shift+Enter for new line
             </span>
           </div>
-          <div className="flex items-center gap-2 text-xs text-[var(--text-sub1)]">
-            <div className="w-2 h-2 bg-[var(--color-green)] rounded-full"></div>
+          <div className="flex items-center gap-2 text-xs text-[var(--chat-subtext)]">
+            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
             <span>Online</span>
           </div>
         </div>

@@ -3,96 +3,72 @@
 @tailwind utilities;
 
 :root {
-  /* Catppuccin Frappé (Light Mode) */
-  --background: hsl(244, 23%, 94%);
-  --foreground: hsl(237, 16%, 23%);
-  --muted: hsl(244, 16%, 92%);
-  --muted-foreground: hsl(233, 13%, 41%);
-  --popover: hsl(244, 23%, 94%);
-  --popover-foreground: hsl(237, 16%, 23%);
-  --card: hsl(244, 19%, 94%);
-  --card-foreground: hsl(237, 16%, 23%);
-  --border: hsl(244, 16%, 92%);
-  --input: hsl(244, 16%, 92%);
-  --primary: hsl(220, 91%, 54%);
-  --primary-foreground: hsl(220, 15%, 95%);
-  --secondary: hsl(244, 16%, 92%);
-  --secondary-foreground: hsl(228, 12%, 8%);
-  --accent: hsl(244, 16%, 92%);
-  --accent-foreground: hsl(228, 12%, 8%);
+  /* Light Mode - Clean & Modern */
+  --background: hsl(0, 0%, 98%);
+  --foreground: hsl(240, 10%, 15%);
+  --muted: hsl(240, 4%, 95%);
+  --muted-foreground: hsl(240, 5%, 50%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(240, 10%, 15%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(240, 10%, 15%);
+  --border: hsl(240, 5%, 90%);
+  --input: hsl(240, 5%, 96%);
+  --primary: hsl(262, 83%, 58%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(240, 4%, 95%);
+  --secondary-foreground: hsl(240, 6%, 10%);
+  --accent: hsl(240, 4%, 95%);
+  --accent-foreground: hsl(240, 6%, 10%);
   --destructive: hsl(0, 62%, 30%);
   --destructive-foreground: hsl(0, 85%, 97%);
-  --ring: hsl(237, 16%, 23%);
-  --radius: 0.5rem;
+  --ring: hsl(262, 83%, 58%);
+  --radius: 0.75rem;
 
-  /* Catppuccin Frappé Colors */
-  --frappe-base: hsl(244, 23%, 94%);
-  --frappe-mantle: hsl(244, 19%, 94%);
-  --frappe-surface0: hsl(244, 16%, 92%);
-  --frappe-surface1: hsl(244, 13%, 88%);
-  --frappe-surface2: hsl(244, 16%, 81%);
-  --frappe-text: hsl(237, 16%, 23%);
-  --frappe-subtext1: hsl(233, 13%, 41%);
-  --frappe-subtext0: hsl(233, 10%, 47%);
-  --frappe-blue: hsl(220, 91%, 54%);
-  --frappe-mauve: hsl(277, 85%, 60%);
-  --frappe-green: hsl(109, 58%, 40%);
-  --frappe-yellow: hsl(35, 77%, 49%);
-  --frappe-red: hsl(0, 68%, 42%);
-  --frappe-peach: hsl(20, 79%, 70%);
-  --frappe-teal: hsl(183, 58%, 40%);
-  --frappe-sky: hsl(197, 97%, 46%);
-  --frappe-sapphire: hsl(189, 70%, 42%);
-  --frappe-lavender: hsl(239, 58%, 66%);
-  --frappe-pink: hsl(316, 73%, 69%);
-  --frappe-flamingo: hsl(0, 59%, 88%);
-  --frappe-rosewater: hsl(10, 57%, 88%);
+  /* Light Mode Custom Colors */
+  --chat-bg: hsl(240, 6%, 97%);
+  --chat-card: hsl(0, 0%, 100%);
+  --chat-border: hsl(240, 5%, 90%);
+  --chat-text: hsl(240, 10%, 15%);
+  --chat-subtext: hsl(240, 5%, 50%);
+  --chat-accent: hsl(262, 83%, 58%);
+  --chat-accent-light: hsl(262, 83%, 96%);
+  --chat-user-bg: hsl(262, 83%, 58%);
+  --chat-assistant-bg: hsl(0, 0%, 100%);
 }
 
 .dark {
-  /* Catppuccin Macchiato (Dark Mode) */
-  --background: hsl(232, 23%, 18%);
-  --foreground: hsl(227, 68%, 88%);
-  --muted: hsl(233, 23%, 15%);
-  --muted-foreground: hsl(227, 27%, 72%);
-  --popover: hsl(232, 23%, 18%);
-  --popover-foreground: hsl(227, 68%, 88%);
-  --card: hsl(232, 23%, 18%);
-  --card-foreground: hsl(227, 68%, 88%);
-  --border: hsl(233, 23%, 15%);
-  --input: hsl(233, 23%, 15%);
-  --primary: hsl(220, 70%, 73%);
-  --primary-foreground: hsl(220, 13%, 18%);
-  --secondary: hsl(233, 23%, 15%);
-  --secondary-foreground: hsl(227, 68%, 88%);
-  --accent: hsl(233, 23%, 15%);
-  --accent-foreground: hsl(227, 68%, 88%);
-  --destructive: hsl(0, 47%, 68%);
-  --destructive-foreground: hsl(0, 19%, 11%);
-  --ring: hsl(227, 68%, 88%);
+  /* Dark Mode - Deep & Modern */
+  --background: hsl(224, 19%, 8%);
+  --foreground: hsl(220, 15%, 95%);
+  --muted: hsl(224, 16%, 12%);
+  --muted-foreground: hsl(220, 8%, 60%);
+  --popover: hsl(224, 19%, 10%);
+  --popover-foreground: hsl(220, 15%, 95%);
+  --card: hsl(224, 19%, 10%);
+  --card-foreground: hsl(220, 15%, 95%);
+  --border: hsl(224, 16%, 16%);
+  --input: hsl(224, 16%, 16%);
+  --primary: hsl(262, 83%, 68%);
+  --primary-foreground: hsl(224, 19%, 8%);
+  --secondary: hsl(224, 16%, 12%);
+  --secondary-foreground: hsl(220, 15%, 95%);
+  --accent: hsl(224, 16%, 12%);
+  --accent-foreground: hsl(220, 15%, 95%);
+  --destructive: hsl(0, 62%, 50%);
+  --destructive-foreground: hsl(0, 85%, 97%);
+  --ring: hsl(262, 83%, 68%);
 
-  /* Catppuccin Macchiato Colors */
-  --macchiato-base: hsl(232, 23%, 18%);
-  --macchiato-mantle: hsl(233, 23%, 15%);
-  --macchiato-surface0: hsl(230, 16%, 30%);
-  --macchiato-surface1: hsl(228, 15%, 39%);
-  --macchiato-surface2: hsl(227, 15%, 47%);
-  --macchiato-text: hsl(227, 68%, 88%);
-  --macchiato-subtext1: hsl(227, 35%, 80%);
-  --macchiato-subtext0: hsl(227, 27%, 72%);
-  --macchiato-blue: hsl(220, 70%, 73%);
-  --macchiato-mauve: hsl(267, 83%, 74%);
-  --macchiato-green: hsl(166, 85%, 80%);
-  --macchiato-yellow: hsl(50, 88%, 76%);
-  --macchiato-red: hsl(10, 58%, 73%);
-  --macchiato-peach: hsl(25, 83%, 73%);
-  --macchiato-teal: hsl(172, 68%, 74%);
-  --macchiato-sky: hsl(197, 71%, 73%);
-  --macchiato-sapphire: hsl(199, 76%, 69%);
-  --macchiato-lavender: hsl(234, 82%, 77%);
-  --macchiato-pink: hsl(316, 74%, 68%);
-  --macchiato-flamingo: hsl(0, 58%, 67%);
-  --macchiato-rosewater: hsl(10, 58%, 67%);
+  /* Dark Mode Custom Colors */
+  --chat-bg: hsl(224, 19%, 8%);
+  --chat-card: hsl(224, 19%, 10%);
+  --chat-border: hsl(224, 16%, 16%);
+  --chat-text: hsl(220, 15%, 95%);
+  --chat-subtext: hsl(220, 8%, 60%);
+  --chat-accent: hsl(262, 83%, 68%);
+  --chat-accent-light: hsl(262, 50%, 20%);
+  --chat-user-bg: hsl(262, 83%, 68%);
+  --chat-assistant-bg: hsl(224, 19%, 10%);
 }
 
 @layer base {
@@ -106,30 +82,30 @@
 }
 
 @layer components {
-  .frappe-colors {
-    --bg-base: var(--frappe-base);
-    --bg-mantle: var(--frappe-mantle);
-    --bg-surface0: var(--frappe-surface0);
-    --bg-surface1: var(--frappe-surface1);
-    --text-main: var(--frappe-text);
-    --text-sub1: var(--frappe-subtext1);
-    --text-sub0: var(--frappe-subtext0);
-    --color-blue: var(--frappe-blue);
-    --color-mauve: var(--frappe-mauve);
-    --color-green: var(--frappe-green);
+  .chat-container {
+    background: var(--chat-bg);
+    color: var(--chat-text);
   }
-
-  .dark .frappe-colors {
-    --bg-base: var(--macchiato-base);
-    --bg-mantle: var(--macchiato-mantle);
-    --bg-surface0: var(--macchiato-surface0);
-    --bg-surface1: var(--macchiato-surface1);
-    --text-main: var(--macchiato-text);
-    --text-sub1: var(--macchiato-subtext1);
-    --text-sub0: var(--macchiato-subtext0);
-    --color-blue: var(--macchiato-blue);
-    --color-mauve: var(--macchiato-mauve);
-    --color-green: var(--macchiato-green);
+  
+  .chat-card {
+    background: var(--chat-card);
+    border: 1px solid var(--chat-border);
+    border-radius: var(--radius);
+  }
+  
+  .chat-welcome {
+    background: linear-gradient(135deg, var(--chat-accent) 0%, hsl(262, 83%, 50%) 100%);
+    color: white;
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dark .chat-welcome {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   }
 }
 

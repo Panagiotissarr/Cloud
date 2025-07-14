@@ -21,26 +21,32 @@ export function MessageArea({ messages, isLoading }: MessageAreaProps) {
   }, [messages, isLoading]);
 
   return (
-    <div className="frappe-colors flex-1 overflow-y-auto p-4 space-y-4">
+    <div className="flex-1 overflow-y-auto p-6 space-y-6">
       {/* Welcome Message */}
-      <div className="flex items-start gap-3 max-w-4xl mx-auto">
-        <div className="w-8 h-8 bg-gradient-to-br from-[var(--color-blue)] to-[var(--color-mauve)] rounded-full flex items-center justify-center flex-shrink-0">
-          <Bot className="text-white text-sm" size={16} />
-        </div>
-        <div className="bg-[var(--bg-mantle)] text-[var(--text-main)] rounded-2xl rounded-tl-md p-4 max-w-3xl">
-          <p>
-            Hey there! I'm Cloud, your friendly AI assistant! 🌤️ I'm here to help you with anything you need - from answering questions to having a chat. I can search the web for real-time information when needed. What would you like to talk about today?
+      {messages.length === 0 && (
+        <div className="chat-welcome">
+          <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mb-4 mx-auto">
+            <Bot className="text-white text-2xl" size={24} />
+          </div>
+          <h2 className="text-2xl font-bold mb-2">Hello I'm Cloud</h2>
+          <p className="text-white text-opacity-90 text-sm">
+            Your AI Assistant
+          </p>
+          <p className="text-white text-opacity-75 text-xs mt-2">
+            Ask Me Anything
           </p>
         </div>
-      </div>
+      )}
 
       {/* Messages */}
-      {messages.map((message) => (
-        <MessageBubble key={message.id} message={message} />
-      ))}
+      <div className="space-y-4 max-w-4xl mx-auto">
+        {messages.map((message) => (
+          <MessageBubble key={message.id} message={message} />
+        ))}
 
-      {/* Typing Indicator */}
-      {isLoading && <TypingIndicator />}
+        {/* Typing Indicator */}
+        {isLoading && <TypingIndicator />}
+      </div>
 
       <div ref={messagesEndRef} />
     </div>

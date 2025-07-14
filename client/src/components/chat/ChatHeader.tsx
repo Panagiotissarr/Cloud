@@ -12,25 +12,25 @@ export function ChatHeader({ webSearchEnabled, onWebSearchToggle }: ChatHeaderPr
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <header className="frappe-colors bg-[var(--bg-mantle)] border-b border-[var(--bg-surface0)] px-4 py-3 flex items-center justify-between">
+    <header className="chat-card border-b-0 rounded-b-none px-6 py-4 flex items-center justify-between">
       <div className="flex items-center gap-3">
-        <div className="w-10 h-10 bg-gradient-to-br from-[var(--color-blue)] to-[var(--color-mauve)] rounded-xl flex items-center justify-center">
+        <div className="w-10 h-10 bg-gradient-to-br from-[var(--chat-accent)] to-purple-500 rounded-xl flex items-center justify-center">
           <Cloud className="text-white text-lg" size={20} />
         </div>
         <div>
-          <h1 className="text-xl font-bold text-[var(--text-main)]">Cloud</h1>
-          <p className="text-sm text-[var(--text-sub1)]">AI Assistant</p>
+          <h1 className="text-xl font-bold text-[var(--chat-text)]">Cloud</h1>
+          <p className="text-sm text-[var(--chat-subtext)]">AI Assistant</p>
         </div>
       </div>
       
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-2">
-          <Search className="w-4 h-4 text-[var(--text-sub1)]" />
-          <span className="text-sm text-[var(--text-sub1)]">Web Search</span>
+          <Search className="w-4 h-4 text-[var(--chat-subtext)]" />
+          <span className="text-sm text-[var(--chat-subtext)]">Web Search</span>
           <Switch
             checked={webSearchEnabled}
             onCheckedChange={onWebSearchToggle}
-            className="data-[state=checked]:bg-[var(--color-blue)]"
+            className="data-[state=checked]:bg-[var(--chat-accent)]"
           />
         </div>
         
@@ -38,7 +38,7 @@ export function ChatHeader({ webSearchEnabled, onWebSearchToggle }: ChatHeaderPr
           variant="ghost"
           size="icon"
           onClick={toggleTheme}
-          className="bg-[var(--bg-surface0)] hover:bg-[var(--bg-surface1)] text-[var(--text-sub1)]"
+          className="hover:bg-[var(--muted)] text-[var(--chat-subtext)]"
         >
           {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
         </Button>
