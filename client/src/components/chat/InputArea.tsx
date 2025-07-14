@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Send, Keyboard, CornerDownLeft } from "lucide-react";
+import { Send, Keyboard, CornerDownLeft, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
@@ -11,6 +11,7 @@ interface InputAreaProps {
 
 export function InputArea({ onSendMessage, disabled }: InputAreaProps) {
   const [message, setMessage] = useState("");
+  const [showTooltip, setShowTooltip] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const handleSend = () => {
@@ -66,15 +67,30 @@ export function InputArea({ onSendMessage, disabled }: InputAreaProps) {
           </div>
           
           <div className="flex items-center justify-between mt-3">
-            <div className="flex items-center gap-4 text-xs text-[var(--chat-subtext)]">
-              <span className="flex items-center gap-1">
-                <Keyboard size={12} />
-                Enter to send
-              </span>
-              <span className="flex items-center gap-1">
-                <CornerDownLeft size={12} />
-                Shift+Enter for new line
-              </span>
+            <div className="flex items-center gap-2">
+              <div className="relative">
+                <button
+                  onMouseEnter={() => setShowTooltip(true)}
+                  onMouseLeave={() => setShowTooltip(false)}
+                  className="p-1 rounded-full hover:bg-[var(--chat-border)] transition-colors"
+                >
+                  <Info size={12} className="text-[var(--chat-subtext)]" />
+                </button>
+                {showTooltip && (
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 bg-[var(--chat-card)] border border-[var(--chat-border)] rounded-lg p-3 shadow-lg z-10 whitespace-nowrap">
+                    <div className="flex flex-col gap-1 text-xs text-[var(--chat-subtext)]">
+                      <span className="flex items-center gap-1">
+                        <Keyboard size={10} />
+                        Enter to send
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <CornerDownLeft size={10} />
+                        Shift+Enter for new line
+                      </span>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
             <div className="flex items-center gap-2 text-xs text-[var(--chat-subtext)]">
               <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
