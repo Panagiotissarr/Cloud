@@ -54,20 +54,7 @@ export function InputArea({ onSendMessage, disabled }: InputAreaProps) {
                 disabled={disabled}
               />
             </div>
-            <Button
-              onClick={handleSend}
-              disabled={!message.trim() || disabled}
-              className={cn(
-                "bg-[var(--chat-accent)] hover:bg-[var(--chat-accent)]/90 text-white rounded-2xl p-4 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--chat-accent)]/50",
-                disabled && "opacity-50 cursor-not-allowed"
-              )}
-            >
-              <Send size={18} />
-            </Button>
-          </div>
-          
-          <div className="flex items-center justify-between mt-3">
-            <div className="flex items-center gap-2">
+            <div className="flex flex-col items-center gap-2">
               <div className="relative">
                 <button
                   onMouseEnter={() => setShowTooltip(true)}
@@ -77,7 +64,7 @@ export function InputArea({ onSendMessage, disabled }: InputAreaProps) {
                   <Info size={12} className="text-[var(--chat-subtext)]" />
                 </button>
                 {showTooltip && (
-                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 bg-[var(--chat-card)] border border-[var(--chat-border)] rounded-lg p-3 shadow-lg z-10 whitespace-nowrap">
+                  <div className="absolute bottom-full right-0 mb-2 bg-[var(--chat-card)] border border-[var(--chat-border)] rounded-lg p-3 shadow-lg z-10 whitespace-nowrap">
                     <div className="flex flex-col gap-1 text-xs text-[var(--chat-subtext)]">
                       <span className="flex items-center gap-1">
                         <Keyboard size={10} />
@@ -91,7 +78,20 @@ export function InputArea({ onSendMessage, disabled }: InputAreaProps) {
                   </div>
                 )}
               </div>
+              <Button
+                onClick={handleSend}
+                disabled={!message.trim() || disabled}
+                className={cn(
+                  "bg-[var(--chat-accent)] hover:bg-[var(--chat-accent)]/90 text-white rounded-2xl p-4 transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--chat-accent)]/50",
+                  disabled && "opacity-50 cursor-not-allowed"
+                )}
+              >
+                <Send size={18} />
+              </Button>
             </div>
+          </div>
+          
+          <div className="flex items-center justify-center mt-3">
             <div className="flex items-center gap-2 text-xs text-[var(--chat-subtext)]">
               <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
               <span>Cloud can make mistakes</span>
