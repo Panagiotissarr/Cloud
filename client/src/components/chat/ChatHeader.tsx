@@ -59,13 +59,15 @@ export function ChatHeader({ webSearchEnabled, onWebSearchToggle }: ChatHeaderPr
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <Search className="w-4 h-4 text-[var(--chat-subtext)]" />
-                    <span className="text-sm text-[var(--chat-subtext)]">Web Search</span>
                   </div>
-                  <Switch
-                    checked={webSearchEnabled}
-                    onCheckedChange={onWebSearchToggle}
-                    className="data-[state=checked]:bg-[var(--chat-accent)]"
-                  />
+                  <div className="relative">
+                    <Switch
+                      checked={webSearchEnabled}
+                      onCheckedChange={onWebSearchToggle}
+                      className="data-[state=checked]:bg-[var(--chat-accent)]"
+                    />
+                    <Search className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 text-white pointer-events-none" />
+                  </div>
                 </div>
                 
                 <div className="flex items-center justify-between">
