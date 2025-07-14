@@ -72,16 +72,20 @@ export function ChatHeader({ webSearchEnabled, onWebSearchToggle }: ChatHeaderPr
                 
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
+                    <div className="transition-all duration-200">
+                      {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
+                    </div>
                     <span className="text-sm text-[var(--chat-subtext)]">Theme</span>
                   </div>
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={toggleTheme}
-                    className="hover:bg-[var(--muted)] text-[var(--chat-subtext)] px-2"
+                    className="hover:bg-[var(--muted)] text-[var(--chat-subtext)] px-2 transition-all duration-200"
                   >
-                    {theme === "light" ? "Dark" : "Light"}
+                    <div className="flex items-center gap-1 transition-all duration-200">
+                      {theme === "light" ? "Dark" : "Light"}
+                    </div>
                   </Button>
                 </div>
               </div>
