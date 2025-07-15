@@ -1,4 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
+import "../../config.js"; // Load configuration
 
 // Note that the newest Gemini model series is "gemini-2.5-flash" or "gemini-2.5-pro"
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
