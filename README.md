@@ -40,7 +40,7 @@ A modern full-stack chat application built with React and Express.js, featuring 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/ai-chat-app.git
+git clone https://github.com/Panagiotissarr/Cloud.git
 cd ai-chat-app
 ```
 
