@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Replace these with your actual tokens
-export GEMINI_API_KEY="your_actual_gemini_api_key_here"
+export GEMINI_API_KEY="AIzaSyC4LWuXg2j33nPqmEs1YHmuOjDPIMkyeLA"
 export DATABASE_URL="your_actual_database_url_here"
 
 # Start the application

@@ -1,6 +1,6 @@
 // Configuration file with hardcoded values
 export const config = {
-  GEMINI_API_KEY: "your_actual_gemini_api_key_here",
+  GEMINI_API_KEY: "AIzaSyC4LWuXg2j33nPqmEs1YHmuOjDPIMkyeLA",
   DATABASE_URL: "your_actual_database_url_here",
   NODE_ENV: "development"
 };
