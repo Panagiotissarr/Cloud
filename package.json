@@ -8,7 +8,10 @@
     "build": "next build",
     "start": "next start",
     "check": "tsc",
-    "db:push": "drizzle-kit push"
+    "db:push": "drizzle-kit push",
+    "vite-build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
+    "server-dev": "NODE_ENV=development tsx server/index.ts",
+    "server-start": "NODE_ENV=production node dist/index.js"
   },
   "dependencies": {
     "@google/genai": "^1.9.0",
