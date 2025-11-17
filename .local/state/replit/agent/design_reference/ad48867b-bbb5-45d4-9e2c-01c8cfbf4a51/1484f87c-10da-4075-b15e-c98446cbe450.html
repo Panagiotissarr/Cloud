@@ -1,0 +1,332 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud - AI Assistant</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        // Catppuccin Frappé (Light Mode)
+                        'frappe': {
+                            'base': '#eff1f5',
+                            'mantle': '#e6e9ef',
+                            'surface0': '#ccd0da',
+                            'surface1': '#bcc0cc',
+                            'surface2': '#a5adcb',
+                            'text': '#4c4f69',
+                            'subtext1': '#5c5f77',
+                            'subtext0': '#6c6f85',
+                            'overlay2': '#7c7f93',
+                            'overlay1': '#8c8fa1',
+                            'overlay0': '#9ca0b0',
+                            'blue': '#1e66f5',
+                            'lavender': '#7287fd',
+                            'sapphire': '#209fb5',
+                            'sky': '#04a5e5',
+                            'teal': '#179299',
+                            'green': '#40a02b',
+                            'yellow': '#df8e1d',
+                            'peach': '#fe640b',
+                            'maroon': '#e64553',
+                            'red': '#d20f39',
+                            'mauve': '#8839ef',
+                            'pink': '#ea76cb',
+                            'flamingo': '#dd7878',
+                            'rosewater': '#dc8a78',
+                        },
+                        // Catppuccin Macchiato (Dark Mode)
+                        'macchiato': {
+                            'base': '#24273a',
+                            'mantle': '#1e2030',
+                            'surface0': '#363a4f',
+                            'surface1': '#494d64',
+                            'surface2': '#5b6078',
+                            'text': '#cad3f5',
+                            'subtext1': '#b8c0e0',
+                            'subtext0': '#a5adcb',
+                            'overlay2': '#939ab7',
+                            'overlay1': '#8087a2',
+                            'overlay0': '#6e738d',
+                            'blue': '#8aadf4',
+                            'lavender': '#b7bdf8',
+                            'sapphire': '#7dc4e4',
+                            'sky': '#91d7e3',
+                            'teal': '#8bd5ca',
+                            'green': '#a6da95',
+                            'yellow': '#eed49f',
+                            'peach': '#f5a97f',
+                            'maroon': '#ee99a0',
+                            'red': '#ed8796',
+                            'mauve': '#c6a0f6',
+                            'pink': '#f5bde6',
+                            'flamingo': '#f0c6c6',
+                            'rosewater': '#f4dbd6',
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 2s infinite',
+                        'typing': 'typing 1.5s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        typing: {
+                            'from': { opacity: '0.2' },
+                            'to': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-inter transition-colors duration-300 bg-frappe-base dark:bg-macchiato-base text-frappe-text dark:text-macchiato-text">
+    
+    <!-- @COMPONENT: AppContainer [main application wrapper] -->
+    <div class="min-h-screen flex flex-col">
+        
+        <!-- @COMPONENT: Header [app header with branding and controls] -->
+        <header class="bg-frappe-mantle dark:bg-macchiato-mantle border-b border-frappe-surface0 dark:border-macchiato-surface0 px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-frappe-blue to-frappe-mauve dark:from-macchiato-blue dark:to-macchiato-mauve rounded-xl flex items-center justify-center">
+                    <i class="fas fa-cloud text-white text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold text-frappe-text dark:text-macchiato-text">Cloud</h1>
+                    <p class="text-sm text-frappe-subtext1 dark:text-macchiato-subtext1">AI Assistant</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <!-- @COMPONENT: WebSearchToggle [toggle for web search functionality] -->
+                <div class="flex items-center gap-2">
+                    <span class="text-sm text-frappe-subtext1 dark:text-macchiato-subtext1">Web Search</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" checked class="sr-only peer" data-implementation="Should toggle web search functionality">
+                        <div class="w-11 h-6 bg-frappe-surface0 dark:bg-macchiato-surface0 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-frappe-blue/20 dark:peer-focus:ring-macchiato-blue/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-frappe-blue dark:peer-checked:bg-macchiato-blue"></div>
+                    </label>
+                </div>
+                
+                <!-- @COMPONENT: ThemeToggle [dark/light mode toggle] -->
+                <button class="p-2 rounded-lg bg-frappe-surface0 dark:bg-macchiato-surface0 hover:bg-frappe-surface1 dark:hover:bg-macchiato-surface1 transition-colors" data-implementation="Should toggle between light and dark themes">
+                    <i class="fas fa-moon dark:hidden text-frappe-subtext1"></i>
+                    <i class="fas fa-sun hidden dark:inline text-macchiato-subtext1"></i>
+                </button>
+            </div>
+        </header>
+        
+        <!-- @COMPONENT: ChatContainer [main chat interface] -->
+        <main class="flex-1 flex flex-col overflow-hidden">
+            
+            <!-- @COMPONENT: MessageArea [scrollable message history] -->
+            <div class="flex-1 overflow-y-auto p-4 space-y-4" data-implementation="Should load and display conversation history">
+                
+                <!-- @COMPONENT: WelcomeMessage [initial greeting] -->
+                <div class="flex items-start gap-3 max-w-4xl mx-auto">
+                    <div class="w-8 h-8 bg-gradient-to-br from-frappe-blue to-frappe-mauve dark:from-macchiato-blue dark:to-macchiato-mauve rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-robot text-white text-sm"></i>
+                    </div>
+                    <div class="bg-frappe-mantle dark:bg-macchiato-mantle rounded-2xl rounded-tl-md p-4 max-w-3xl">
+                        <p class="text-frappe-text dark:text-macchiato-text">Hey there! I'm Cloud, your friendly AI assistant! 🌤️ I'm here to help you with anything you need - from answering questions to having a chat. I can search the web for real-time information when needed. What would you like to talk about today?</p>
+                    </div>
+                </div>
+                
+                <!-- @MAP: messages.map(message => ( -->
+                <!-- @COMPONENT: UserMessage [user's message bubble] -->
+                <div class="flex items-start gap-3 max-w-4xl mx-auto justify-end">
+                    <div class="bg-frappe-blue dark:bg-macchiato-blue rounded-2xl rounded-tr-md p-4 max-w-3xl">
+                        <p class="text-white" data-bind="message.content">Can you tell me about the latest developments in AI technology?</p>
+                    </div>
+                    <div class="w-8 h-8 bg-frappe-surface0 dark:bg-macchiato-surface0 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-user text-frappe-subtext1 dark:text-macchiato-subtext1 text-sm"></i>
+                    </div>
+                </div>
+                
+                <!-- @COMPONENT: AIMessage [AI's response bubble] -->
+                <div class="flex items-start gap-3 max-w-4xl mx-auto">
+                    <div class="w-8 h-8 bg-gradient-to-br from-frappe-blue to-frappe-mauve dark:from-macchiato-blue dark:to-macchiato-mauve rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-robot text-white text-sm"></i>
+                    </div>
+                    <div class="bg-frappe-mantle dark:bg-macchiato-mantle rounded-2xl rounded-tl-md p-4 max-w-3xl">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fas fa-search text-frappe-blue dark:text-macchiato-blue text-sm"></i>
+                            <span class="text-xs text-frappe-subtext1 dark:text-macchiato-subtext1">Web search enabled</span>
+                        </div>
+                        <p class="text-frappe-text dark:text-macchiato-text" data-bind="message.content">Great question! Based on my latest search, here are some exciting developments in AI technology:</p>
+                        <ul class="mt-2 space-y-1 text-frappe-text dark:text-macchiato-text">
+                            <li>• <strong>Large Language Models:</strong> Continued improvements in reasoning and multimodal capabilities</li>
+                            <li>• <strong>AI Safety:</strong> Enhanced alignment techniques and responsible AI development</li>
+                            <li>• <strong>Edge AI:</strong> More powerful on-device processing for privacy and speed</li>
+                            <li>• <strong>Generative AI:</strong> Better image, video, and audio generation tools</li>
+                        </ul>
+                        <p class="mt-2 text-frappe-text dark:text-macchiato-text">Would you like me to dive deeper into any of these areas? I'm always excited to chat about technology! 😊</p>
+                    </div>
+                </div>
+                
+                <!-- @COMPONENT: UserMessage [another user message] -->
+                <div class="flex items-start gap-3 max-w-4xl mx-auto justify-end">
+                    <div class="bg-frappe-blue dark:bg-macchiato-blue rounded-2xl rounded-tr-md p-4 max-w-3xl">
+                        <p class="text-white" data-bind="message.content">That's fascinating! Can you tell me more about edge AI?</p>
+                    </div>
+                    <div class="w-8 h-8 bg-frappe-surface0 dark:bg-macchiato-surface0 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-user text-frappe-subtext1 dark:text-macchiato-subtext1 text-sm"></i>
+                    </div>
+                </div>
+                
+                <!-- @COMPONENT: TypingIndicator [shows AI is typing] -->
+                <div class="flex items-start gap-3 max-w-4xl mx-auto">
+                    <div class="w-8 h-8 bg-gradient-to-br from-frappe-blue to-frappe-mauve dark:from-macchiato-blue dark:to-macchiato-mauve rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-robot text-white text-sm"></i>
+                    </div>
+                    <div class="bg-frappe-mantle dark:bg-macchiato-mantle rounded-2xl rounded-tl-md p-4">
+                        <div class="flex items-center gap-1">
+                            <div class="w-2 h-2 bg-frappe-subtext1 dark:bg-macchiato-subtext1 rounded-full animate-typing"></div>
+                            <div class="w-2 h-2 bg-frappe-subtext1 dark:bg-macchiato-subtext1 rounded-full animate-typing" style="animation-delay: 0.2s"></div>
+                            <div class="w-2 h-2 bg-frappe-subtext1 dark:bg-macchiato-subtext1 rounded-full animate-typing" style="animation-delay: 0.4s"></div>
+                            <span class="ml-2 text-frappe-subtext1 dark:text-macchiato-subtext1 text-sm">Cloud is typing...</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- @END_MAP )) -->
+                
+            </div>
+            
+            <!-- @COMPONENT: InputArea [message input and send controls] -->
+            <div class="border-t border-frappe-surface0 dark:border-macchiato-surface0 p-4">
+                <div class="max-w-4xl mx-auto">
+                    <div class="flex items-end gap-3">
+                        <div class="flex-1 bg-frappe-mantle dark:bg-macchiato-mantle rounded-2xl border border-frappe-surface0 dark:border-macchiato-surface0 focus-within:border-frappe-blue dark:focus-within:border-macchiato-blue focus-within:ring-2 focus-within:ring-frappe-blue/20 dark:focus-within:ring-macchiato-blue/20">
+                            <textarea 
+                                class="w-full p-4 bg-transparent resize-none focus:outline-none placeholder-frappe-subtext0 dark:placeholder-macchiato-subtext0 text-frappe-text dark:text-macchiato-text min-h-[60px] max-h-32" 
+                                placeholder="Type your message... (Press Enter to send, Shift+Enter for new line)"
+                                data-implementation="Should handle message input and sending"
+                                data-mock="true"
+                            ></textarea>
+                        </div>
+                        <button class="bg-frappe-blue dark:bg-macchiato-blue hover:bg-frappe-blue/90 dark:hover:bg-macchiato-blue/90 text-white rounded-2xl p-4 transition-colors focus:outline-none focus:ring-2 focus:ring-frappe-blue/50 dark:focus:ring-macchiato-blue/50" data-event="click:handleSendMessage">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- @COMPONENT: InputHints [helpful input hints] -->
+                    <div class="flex items-center justify-between mt-3">
+                        <div class="flex items-center gap-4 text-xs text-frappe-subtext1 dark:text-macchiato-subtext1">
+                            <span class="flex items-center gap-1">
+                                <i class="fas fa-keyboard"></i>
+                                Enter to send
+                            </span>
+                            <span class="flex items-center gap-1">
+                                <i class="fas fa-arrow-turn-down"></i>
+                                Shift+Enter for new line
+                            </span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs text-frappe-subtext1 dark:text-macchiato-subtext1">
+                            <i class="fas fa-circle text-frappe-green dark:text-macchiato-green"></i>
+                            <span>Online</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+        
+    </div>
+    <!-- @END_COMPONENT: AppContainer -->
+    
+    <!-- @COMPONENT: MobileOptimizations [mobile-specific enhancements] -->
+    <style>
+        @media (max-width: 768px) {
+            .max-w-4xl {
+                max-width: 100%;
+            }
+            
+            .max-w-3xl {
+                max-width: calc(100% - 2rem);
+            }
+        }
+    </style>
+    
+    <script>
+        // Theme toggle functionality
+        (function() {
+            const themeToggle = document.querySelector('[data-implementation*="toggle between light and dark"]');
+            const html = document.documentElement;
+            
+            // Check for saved theme preference or default to light mode
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                html.classList.toggle('dark', savedTheme === 'dark');
+            }
+            
+            themeToggle?.addEventListener('click', function() {
+                html.classList.toggle('dark');
+                localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+            });
+        })();
+        
+        // Auto-resize textarea
+        (function() {
+            const textarea = document.querySelector('textarea');
+            if (textarea) {
+                textarea.addEventListener('input', function() {
+                    this.style.height = 'auto';
+                    this.style.height = Math.min(this.scrollHeight, 128) + 'px';
+                });
+                
+                // Handle Enter key for sending messages
+                textarea.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        // TODO: Implement message sending functionality
+                        console.log('Send message:', this.value);
+                        this.value = '';
+                        this.style.height = 'auto';
+                    }
+                });
+            }
+        })();
+        
+        // Web search toggle
+        (function() {
+            const searchToggle = document.querySelector('[data-implementation*="toggle web search"]');
+            searchToggle?.addEventListener('change', function() {
+                // TODO: Implement web search toggle functionality
+                console.log('Web search:', this.checked ? 'enabled' : 'disabled');
+            });
+        })();
+        
+        // Message area auto-scroll
+        (function() {
+            const messageArea = document.querySelector('[data-implementation*="conversation history"]');
+            if (messageArea) {
+                // Scroll to bottom on new messages
+                messageArea.scrollTop = messageArea.scrollHeight;
+            }
+        })();
+        
+        // Send button functionality
+        (function() {
+            const sendButton = document.querySelector('[data-event="click:handleSendMessage"]');
+            const textarea = document.querySelector('textarea');
+            
+            sendButton?.addEventListener('click', function() {
+                if (textarea && textarea.value.trim()) {
+                    // TODO: Implement message sending to OpenAI API
+                    console.log('Send message:', textarea.value);
+                    textarea.value = '';
+                    textarea.style.height = 'auto';
+                }
+            });
+        })();
+    </script>
+    
+</body>
+</html>
